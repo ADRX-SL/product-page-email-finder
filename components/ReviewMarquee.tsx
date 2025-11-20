@@ -2,6 +2,7 @@ import React from 'react';
 import { Star } from 'lucide-react';
 import { SCROLLING_REVIEWS } from '../constants';
 
+// --- Review Card Component ---
 const ReviewCard: React.FC<{ review: typeof SCROLLING_REVIEWS[0] }> = ({ review }) => (
   <div className="w-80 md:w-96 bg-white p-5 rounded-xl shadow-md border border-blue-100 flex-shrink-0 flex flex-col gap-3">
     <div className="flex justify-between items-start">
@@ -28,22 +29,14 @@ export const ReviewMarquee = () => {
        
        {/* Marquee Track */}
        <div className="flex animate-scroll w-max hover:pause">
-          {/* Duplicate list twice to ensure seamless infinite scroll */}
-          <div className="flex gap-6 px-3">
-             {SCROLLING_REVIEWS.map((review, i) => (
-                 <ReviewCard key={`a-${i}`} review={review} />
-             ))}
-          </div>
-          <div className="flex gap-6 px-3">
-             {SCROLLING_REVIEWS.map((review, i) => (
-                 <ReviewCard key={`b-${i}`} review={review} />
-             ))}
-          </div>
-          <div className="flex gap-6 px-3">
-             {SCROLLING_REVIEWS.map((review, i) => (
-                 <ReviewCard key={`c-${i}`} review={review} />
-             ))}
-          </div>
+          {/* Duplicate list 3 times for smooth infinite scroll */}
+          {[1, 2, 3].map((iter) => (
+            <div key={iter} className="flex gap-6 px-3">
+               {SCROLLING_REVIEWS.map((item, i) => (
+                   <ReviewCard key={`rev-${iter}-${i}`} review={item} />
+               ))}
+            </div>
+          ))}
        </div>
 
        {/* Right Side Overlay & Chrome Badge */}
@@ -51,7 +44,6 @@ export const ReviewMarquee = () => {
           <div className="bg-white rounded-xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-blue-100 flex items-center gap-4 pointer-events-auto transform scale-90 md:scale-100 origin-right">
               {/* Chrome Icon SVG */}
               <div className="w-12 h-12 flex-shrink-0 relative">
-                 {/* A constructed high-fidelity chrome logo */}
                  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="48" fill="white"/>
                     <mask id="chromeMask" maskUnits="userSpaceOnUse" x="2" y="2" width="96" height="96">

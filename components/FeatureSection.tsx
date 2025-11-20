@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from './Button';
@@ -12,7 +13,9 @@ interface FeatureSectionProps {
   imageSrc?: string;
   reversed?: boolean;
   ctaText?: string;
-  visualContent?: React.ReactNode; // Allows passing a custom React component for the visual part instead of just an image
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
+  visualContent?: React.ReactNode; 
 }
 
 export const FeatureSection: React.FC<FeatureSectionProps> = ({
@@ -25,12 +28,14 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   imageSrc,
   reversed = false,
   ctaText,
+  secondaryCtaText,
+  secondaryCtaLink,
   visualContent
 }) => {
   return (
     <section className="py-20 lg:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col gap-16 lg:gap-24 items-center ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+        <div className={`flex flex-col gap-16 lg:gap-40 items-center ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
           
           {/* Text Content */}
           <div className="w-full lg:w-1/2 space-y-8">
@@ -91,11 +96,26 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
             </div>
             )}
 
-            {ctaText && (
-              <div className="pt-4">
-                <Button className="group">
-                  {ctaText} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
+            {(ctaText || secondaryCtaText) && (
+              <div className="pt-4 flex flex-wrap gap-4 items-center">
+                {ctaText && (
+                  <Button className="group">
+                    {ctaText} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                )}
+                {secondaryCtaText && (
+                  secondaryCtaLink ? (
+                    <a href={secondaryCtaLink} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline">
+                        {secondaryCtaText}
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button variant="outline">
+                      {secondaryCtaText}
+                    </Button>
+                  )
+                )}
               </div>
             )}
           </div>

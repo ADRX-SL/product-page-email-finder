@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Search, Loader2 } from 'lucide-react';
+import { Search, Loader2, ArrowRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -72,6 +72,11 @@ export const Hero: React.FC = () => {
               Find email
             </button>
           </form>
+
+          {/* New CTA Button */}
+          <button className="w-full bg-[#3C72E6] hover:bg-blue-700 text-white font-bold py-4 rounded-lg mt-4 flex items-center justify-center gap-2 transition-colors text-lg shadow-md relative z-10">
+            Or Create Your Free Account For More <ArrowRight className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Social Proof */}

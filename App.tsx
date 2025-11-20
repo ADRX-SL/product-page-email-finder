@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -6,6 +7,8 @@ import { FeatureSection } from './components/FeatureSection';
 import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
+import { VideoSection } from './components/VideoSection';
+import { ReviewGrid } from './components/ReviewGrid';
 import { Check, ShieldCheck, Smartphone, Mail, Download, MoreHorizontal, Search, ArrowRight, Zap } from 'lucide-react';
 
 // --- Mock UI Components for Feature Visuals ---
@@ -321,6 +324,79 @@ const Feature5Visual = () => (
   </div>
 );
 
+// --- Data for Review Sections ---
+const REVIEWS_TIRAN_TIM = [
+  {
+    name: "Tiran Jackson",
+    role: "",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80", 
+    quote: "This is one of the most powerful and valuable tools you can have if you're looking to grow your business as an entrepreneur. For the cost, it is the best value for finding information and attracting leads by far. I recommend this tool for anyone who really wants explosive growth in their business!",
+    highlight: "explosive growth in their business!"
+  },
+  {
+    name: "Tim Masek",
+    role: "", 
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80", 
+    quote: "Gamechanger for my workflow. Couldn't live without it.",
+    highlight: "Couldn't live without it."
+  }
+];
+
+const REVIEWS_BYRON_ANDRE = [
+  {
+    name: "Byron Trzeciak",
+    role: "",
+    // Black and white / beanie vibe placeholder
+    image: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80", 
+    quote: "I rely on this service for email validation accuracy. It's cost-effective, and the exceptional customer service from Arnaud and Youssef makes it even better. They're proactive about helping users succeed.",
+    highlight: "exceptional customer service"
+  },
+  {
+    name: "ANDRE MUNRO",
+    role: "",
+    // Glasses placeholder
+    image: "https://images.unsplash.com/photo-1545167622-3a6ac156a1e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80", 
+    quote: "Excellent tool: it is fast, easy to use, and has a good email identification match rate. Highly recommended!",
+    highlight: "Highly recommended!"
+  }
+];
+
+const REVIEWS_DANIEL_MIKE = [
+  {
+    name: "Daniel Levi",
+    role: "",
+    // Purple D icon style
+    image: "https://ui-avatars.com/api/?name=Daniel+Levi&background=8b5cf6&color=fff&size=128", 
+    quote: "This tool solved a major problem I had, so feeling very happy! Works well, very easy to use.",
+    highlight: "Works well, very easy to use."
+  },
+  {
+    name: "Mike Parsons",
+    role: "",
+    // Generic professional headshot
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80", 
+    quote: "I have been able to get a heap of relevant leads at a reasonable cost. Big kudos to the team at Scalelist for being so quick and effective.",
+    highlight: "heap of relevant leads at a reasonable cost"
+  }
+];
+
+const REVIEWS_RAGLAND_JAMES = [
+  {
+    name: "Ragland Samuvel",
+    role: "",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80", 
+    quote: "Exceptional Customer service and they do cater for your needs. Very useful for bootstrapped startups.",
+    highlight: "Exceptional Customer service"
+  },
+  {
+    name: "James Donaldson",
+    role: "",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80", 
+    quote: "This is by far the easiest and cleanest UX of any solution I've used to export leads and enrich data. Simple and fast to use. Perfect for small to medium teams who want to start quickly. Verification is prioritised over volume, so also strong for protecting data, domains etc.",
+    highlight: "easiest and cleanest UX"
+  }
+];
+
 function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
@@ -337,7 +413,12 @@ function App() {
         imageAlt="Email Finder Interface Mockup"
         visualContent={<Feature1Visual />}
         ctaText="Try for free (14-days)"
+        secondaryCtaText="Talk to Sales"
+        secondaryCtaLink="https://calendly.com/arnaud-scalelist/learn-about-monitoring"
       />
+      
+      {/* Review Section 1 */}
+      <ReviewGrid reviews={REVIEWS_TIRAN_TIM} />
 
       {/* Feature 2: Image Left, Text Right */}
       <FeatureSection 
@@ -350,9 +431,14 @@ function App() {
           { title: "Get Verified Results", description: "Receive 100% verified emails with our email enrichment tool." }
         ]}
         ctaText="Start Free Email Search"
+        secondaryCtaText="Talk to Sales"
+        secondaryCtaLink="https://calendly.com/arnaud-scalelist/learn-about-monitoring"
         imageAlt="How it works mockup"
         visualContent={<Feature2Visual />}
       />
+
+      {/* Review Section 2 */}
+      <ReviewGrid reviews={REVIEWS_BYRON_ANDRE} />
 
       {/* Feature 3: Text Left, Image Right */}
       <FeatureSection 
@@ -368,7 +454,12 @@ function App() {
         imageAlt="Data enrichment visual"
         visualContent={<Feature3Visual />}
         ctaText="Try for free (14-days)"
+        secondaryCtaText="Talk to Sales"
+        secondaryCtaLink="https://calendly.com/arnaud-scalelist/learn-about-monitoring"
       />
+      
+      {/* Review Section 3 */}
+      <ReviewGrid reviews={REVIEWS_DANIEL_MIKE} />
 
       {/* Feature 4: Image Left, Text Right */}
       <FeatureSection 
@@ -382,9 +473,14 @@ function App() {
             { title: "Freelancers", description: "Find clients easily with our email finder tool." }
         ]}
         ctaText="Find Emails Now"
+        secondaryCtaText="Talk to Sales"
+        secondaryCtaLink="https://calendly.com/arnaud-scalelist/learn-about-monitoring"
         imageAlt="Target audience visual"
         visualContent={<Feature4Visual />}
       />
+
+      {/* Review Section 4 */}
+      <ReviewGrid reviews={REVIEWS_RAGLAND_JAMES} />
 
       {/* Feature 5: Text Left, Image Right (No Signup) */}
       <FeatureSection 
@@ -396,9 +492,13 @@ function App() {
             "3. One click to enrich data and find the email."
         ]}
         ctaText="Try the Email Finder for free"
+        secondaryCtaText="Talk to Sales"
+        secondaryCtaLink="https://calendly.com/arnaud-scalelist/learn-about-monitoring"
         imageAlt="No signup visual"
         visualContent={<Feature5Visual />}
       />
+
+      <VideoSection />
 
       <Testimonials />
       
